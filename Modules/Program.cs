@@ -7,12 +7,14 @@ namespace Modules
     {
         static void Main()
         {
-            Posts post = new Posts();
-            post.PostId = 1;
-            post.Post = "This is a post";
+            int result = SumOfNumbers(10,20);
 
-            Console.WriteLine("The value of my first property is: " + post.PostId);
-            Console.WriteLine("The value of my second property is: " + post.Post);
+            Console.WriteLine(result);
+        }
+
+        public static int SumOfNumbers(int parameter1, int parameter2)
+        {
+            return parameter1 + parameter2;
         }
     }
 }
