@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.MyClasses;
+using Modules.MyClasses.DTOS;
 
 namespace Modules
 {
@@ -7,14 +8,12 @@ namespace Modules
     {
         static void Main()
         {
-            int result = SumOfNumbers(10,20);
+            MyClasses.DTOS.CommentDTO comment = new CommentDTO();
+            comment.TheComment = "This is a Comment";
 
-            Console.WriteLine(result);
+            Console.WriteLine("The value of my first property is a comment: " + comment.TheComment);
         }
 
-        public static int SumOfNumbers(int parameter1, int parameter2)
-        {
-            return parameter1 + parameter2;
-        }
+        
     }
 }
