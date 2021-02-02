@@ -13,7 +13,7 @@ namespace Modules
         static void Main()
         {
             int variable = 0;
-           
+            Console.WriteLine(variable);
         }
          
 
