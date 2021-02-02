@@ -8,6 +8,7 @@ namespace Modules.MyClasses.DTOS
         }
 
         public int RoleId { get; set; }
+   
         public string RoleName { get; set; }
     }
 }
