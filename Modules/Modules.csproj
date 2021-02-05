@@ -9,4 +9,7 @@
     <Folder Include="MyClasses\" />
     <Folder Include="MyClasses\DTOS\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" />
+  </ItemGroup>
 </Project>
