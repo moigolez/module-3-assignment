@@ -12,18 +12,24 @@ namespace Modules
 
         static void Main()
         {
-            int result = 0;
+            DateTime myDateTimeVariable = new DateTime(2010, 05, 10);
+            DateTime myDateTimeVariable2 = new DateTime(1998, 01, 01);
 
-            for(int x=1;x<21;x++)
+            int result = DateTime.Compare(myDateTimeVariable, myDateTimeVariable2);
+
+            
+
+            Console.WriteLine(result);
+
+
             {
 
-                result = result + x;
+                
           }
 
 
 
-            Console.WriteLine(result);
-
+           
             
         }
          
