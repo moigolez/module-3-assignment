@@ -1,36 +1,37 @@
 ﻿ using System;
 using Modules.MyClasses;
-using Modules.MyClasses.DTOS;
+
 
 namespace Modules
 {
     class Program
     {
 
-
         static void Main()
         {
-            MyClass<int> myClass = new MyClass<int>();
+            MyClass myVariable = new MyClass();
+            myVariable.MyMethod<string>("string 1", "string 2");
+           
 
-            myClass.MyProperty1 = 10;
-            myClass.MyProperty2 = 20;
-
-
-
-
-            Console.WriteLine(myClass.MyProperty1);
-            Console.WriteLine(myClass.MyProperty2);
+            Console.WriteLine(myVariable.MyProperty1);
+            Console.WriteLine(myVariable.MyProperty2);
 
 
         }
     }
 }
 
-public class MyClass<M>
+public class MyClass
 {
-    internal int MyProperty1;
+   
+    public string MyProperty1 { get; set; }
+    public string MyProperty2 { get; set; }
 
-    public M MyPtoperty1 { get; set; }
-    public M MyPtoperty2 { get; set; }
-    public int MyProperty2 { get; internal set; }
+    public void MyMethod<T>(T parameter1, T parameter2)
+    {
+
+        this.MyProperty1 = parameter1.ToString();
+        this.MyProperty2 = parameter2.ToString();
+    }
+    
 }
