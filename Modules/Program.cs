@@ -10,16 +10,27 @@ namespace Modules
 
         static void Main()
         {
-            Posts post = new Posts();
-            post.PostId = 1;
-            post.Post = "This is a post";
-               
+            MyClass<int> myClass = new MyClass<int>();
+
+            myClass.MyProperty1 = 10;
+            myClass.MyProperty2 = 20;
 
 
-            Console.WriteLine("The value of my first property is:" + post.PostId);
-            Console.WriteLine("The value of my second property is:" + post.Post);
+
+
+            Console.WriteLine(myClass.MyProperty1);
+            Console.WriteLine(myClass.MyProperty2);
 
 
         }
     }
+}
+
+public class MyClass<M>
+{
+    internal int MyProperty1;
+
+    public M MyPtoperty1 { get; set; }
+    public M MyPtoperty2 { get; set; }
+    public int MyProperty2 { get; internal set; }
 }
