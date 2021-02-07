@@ -5,3 +5,6 @@ dotnet_diagnostic.IDE0055.severity = none
 
 # IDE0001: Simplify Names
 dotnet_diagnostic.IDE0001.severity = none
+
+# IDE0003: Remove qualification
+dotnet_style_qualification_for_event = true:silent

@@ -1,4 +1,6 @@
 ﻿ using System;
+using System.Collections.Generic;
+using System.Linq;
 using Modules.MyClasses;
 
 
@@ -6,32 +8,32 @@ namespace Modules
 {
     class Program
     {
-
+        
         static void Main()
         {
-            MyClass myVariable = new MyClass();
-            myVariable.MyMethod<string>("string 1", "string 2");
+
+            List<int> myList = new List<int>();
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList.Add(4);
+            myList.Add(5);
+            myList.Add(6);
+            myList.Add(7);
+            myList.Add(8);
+            myList.Add(9);
+            myList.Add(10);
+
+            int result = myList.Select(number => number).First();
+
+
+            Console.WriteLine(result);
+
            
-
-            Console.WriteLine(myVariable.MyProperty1);
-            Console.WriteLine(myVariable.MyProperty2);
-
 
         }
     }
 }
 
-public class MyClass
-{
-   
-    public string MyProperty1 { get; set; }
-    public string MyProperty2 { get; set; }
 
-    public void MyMethod<T>(T parameter1, T parameter2)
-    {
-
-        this.MyProperty1 = parameter1.ToString();
-        this.MyProperty2 = parameter2.ToString();
-    }
     
-}

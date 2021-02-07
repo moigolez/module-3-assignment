@@ -8,6 +8,7 @@
   <ItemGroup>
     <Folder Include="MyClasses\" />
     <Folder Include="MyClasses\DTOS\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="..\.editorconfig" />
