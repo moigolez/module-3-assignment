@@ -1,5 +1,5 @@
-﻿ using System;
-namespace Modules.MyClasses
+﻿using System;
+namespace Modules.Models
 {
     public class Comment
     {
@@ -8,5 +8,6 @@ namespace Modules.MyClasses
         }
 
         public string TheComment { get; set; }
+        public int CommentId { get; set; }
     }
 }
