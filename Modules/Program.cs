@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Modules.MyClasses;
-
+using Modules.MyClasses.Models;
 
 namespace Modules
 {
@@ -13,25 +13,39 @@ namespace Modules
         static void Main()
         {
 
-            DateTime myFirstDateVariable = new DateTime(1954, 01, 01);
-            DateTime mySecondDateVariable = new DateTime(1998, 01, 01);
+            string response = "";
 
-            int result = DateTime.Compare(myFirstDateVariable, mySecondDateVariable);
+            ShoppingCart myShoppingCart = new ShoppingCart();
 
-
-
-            if(result==1)
+            while (response != "5")
             {
-                Console.WriteLine("The second date is greater");
+                myShoppingCart.PrintMenu();
 
-            }
-            else
-            {
+                response = myShoppingCart.CaptureResponse();
 
-                Console.WriteLine("The first date is greater");
+                switch (response)
+                {
+                    case "1":
+                        myShoppingCart.CreateUser();
+                        break;
+                    case "2":
+                        myShoppingCart.CreateCakeReview();
+                        break;
+                    case "3":
+                        myShoppingCart.ShowAllExistingUsers();
+                        break;
+                    case "4":
+                        myShoppingCart.ShowAllExistingCakeReviews();
+                        break;
+                    case "5":
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
 }
+
 
 
