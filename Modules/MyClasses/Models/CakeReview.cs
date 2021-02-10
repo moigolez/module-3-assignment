@@ -12,5 +12,15 @@ namespace Modules.MyClasses.Models
         public string Review { get; set; }
 
         public int CakeId { get; set; }
+
+        public override string ToString()
+        {
+            string format = "Review Id: [{0}], The Review: [{1}]]";
+
+            return String.Format(format, CakeReviewId, Review, CakeId);
+        }
+
     }
 }
+
+

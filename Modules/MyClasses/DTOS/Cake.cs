@@ -1,8 +1,11 @@
-﻿namespace Modules.Models
+﻿using System;
+using Modules.Models;
+
+namespace Modules.MyClasses.DTOS
 {
-    public class Cake
+    public class CakeDTO
     {
-        public int CakeID { get; set; }
+        public int CakeId { get; set; }
 
         public string Type { get; set; }
 
@@ -12,6 +15,6 @@
 
         public string Flavor { get; set; }
 
-        
+        public Role Role { get; set; }
     }
 }

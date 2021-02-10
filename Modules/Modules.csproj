@@ -9,6 +9,9 @@
     <Folder Include="MyClasses\" />
     <Folder Include="MyClasses\DTOS\" />
     <Folder Include="MyClasses\Models\" />
+    <Folder Include="MyClasses\Exceptions\" />
+    <Folder Include="MyClasses\Repositories\" />
+    <Folder Include="MyClasses\Repositories\Implementation\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="..\.editorconfig" />

@@ -1,8 +1,11 @@
 ﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
+using Modules.Models;
 using Modules.MyClasses;
+using Modules.MyClasses.Exceptions;
 using Modules.MyClasses.Models;
+using Modules.MyClasses.Repositories.Implementation;
 
 namespace Modules
 {
@@ -12,38 +15,23 @@ namespace Modules
 
         static void Main()
         {
+            
+ 
+           
 
-            string response = "";
+            UserRepository userRepo = new UserRepository();
+            
 
-            ShoppingCart myShoppingCart = new ShoppingCart();
+            User newUser = new User();
+            newUser.Email = "kimi1@yahoo.com";
+            newUser.Password = "Password";
+            newUser.UserId = 1;
+            newUser.UserName = "Kimi";
+            userRepo.Save(newUser);
 
-            while (response != "5")
-            {
-                myShoppingCart.PrintMenu();
-
-                response = myShoppingCart.CaptureResponse();
-
-                switch (response)
-                {
-                    case "1":
-                        myShoppingCart.CreateUser();
-                        break;
-                    case "2":
-                        myShoppingCart.CreateCakeReview();
-                        break;
-                    case "3":
-                        myShoppingCart.ShowAllExistingUsers();
-                        break;
-                    case "4":
-                        myShoppingCart.ShowAllExistingCakeReviews();
-                        break;
-                    case "5":
-                        break;
-                    default:
-                        break;
-                }
-            }
+            userRepo.GetAllUsersByName("Kimi");
         }
+        
     }
 }
 

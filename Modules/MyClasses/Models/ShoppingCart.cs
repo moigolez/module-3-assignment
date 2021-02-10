@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Modules.Models;
+using Modules.MyClasses.Exceptions;
 
 namespace Modules.MyClasses.Models
 {
     public class ShoppingCart
     {
         private List<User> userList = new List<User>();
-        private List<CakeReview> cakeReviewList = new List<CakeReview>();
+        private readonly List<CakeReview> cakeReviewList = new List<CakeReview>();
 
         public ShoppingCart()
         {
@@ -19,7 +21,9 @@ namespace Modules.MyClasses.Models
             Console.WriteLine("2. Create a Cake Review");
             Console.WriteLine("3. Print the list of Users");
             Console.WriteLine("4. Print the list of Cake Reviews");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Look for a User");
+            Console.WriteLine("6. Look for a Cake Review");
+            Console.WriteLine("7. Exit");
         }
 
         public string CaptureResponse()
@@ -28,6 +32,7 @@ namespace Modules.MyClasses.Models
 
             return response;
         }
+
         public void CreateUser()
         {
             User myUser = new User();
@@ -92,9 +97,92 @@ namespace Modules.MyClasses.Models
             }
             Console.WriteLine("");
         }
+
+        public void LookForAUser()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Type the name of the user you are looking for.");
+            string userName = Console.ReadLine();
+
+            IList<User> usersFoundList = userList.Where(user => user.UserName.Contains(userName)).ToList();
+
+            if (usersFoundList.Count == 0)
+            {
+                throw new UserNotFound("The user name specified was not found in the existing user list");
+            }
+            else
+            {
+                Console.WriteLine("These are all the users found with the user name requested:");
+
+                foreach (var user in usersFoundList)
+                {
+                    Console.WriteLine(user.ToString());
+                }
+
+                Console.WriteLine("");
+            }
+        }
+
+        public void LookForACakeReview()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Type a text you want to look for in the comments.");
+            string review = Console.ReadLine();
+
+            IList<CakeReview> cakeReviewsFoundList = cakeReviewList.Where(user => user.Review.Contains(review)).ToList();
+
+            if (cakeReviewsFoundList.Count == 0)
+            {
+                throw new CakeReviewNotFound("The comment review was not found in the existing cake review list");
+            }
+            else
+            {
+                Console.WriteLine("These are all the cake reviews found that contains the text requested:");
+
+                foreach (var cakeReview in cakeReviewsFoundList)
+                {
+                    Console.WriteLine(cakeReview.ToString());
+                }
+
+                Console.WriteLine("");
+            }
+        }
+
+        public void ExecuteMainMenu()
+        {
+            string response = "";
+
+            while (response != "7")
+            {
+                PrintMenu();
+
+                response = CaptureResponse();
+
+                switch (response)
+                {
+                    case "1":
+                        CreateUser();
+                        break;
+                    case "2":
+                        CreateCakeReview();
+                        break;
+                    case "3":
+                        ShowAllExistingUsers();
+                        break;
+                    case "4":
+                        ShowAllExistingCakeReviews();
+                        break;
+                    case "5":
+                        LookForAUser();
+                        break;
+                    case "6":
+                        LookForACakeReview();
+                        break;
+                }
+            }
+        }
     }
 }
-
 
 
 
