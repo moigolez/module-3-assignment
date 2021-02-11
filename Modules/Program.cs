@@ -12,22 +12,26 @@ namespace Modules
 {
     class Program
     {
-        
+        private static object file;
+        private static bool result;
 
-        static void Main()
+        private static string Main()
         {
             string response = "";
             List<User> userList = new List<User>();
             List<Comment> commentList = new List<Comment>();
 
 
-            while (response != "5")
+            while (response != "8")
             {
                 Console.WriteLine("1. Create a User");
                 Console.WriteLine("2. Create a Comment");
                 Console.WriteLine("3. Print the List of Users");
                 Console.WriteLine("4. Print the List of Comments");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Look for a User");
+                Console.WriteLine("6. Look for a Comment");
+                Console.WriteLine("7. Create a Data File");
+                Console.WriteLine("8. Exit");
 
                 Console.WriteLine("");
                 Console.WriteLine("Please select an option");
@@ -84,14 +88,118 @@ namespace Modules
                           
                         }
                         break;
+
+
+                    case "5":
+                        try
+                        {
+                            List<User> myList = new List<User>();
+
+                            User newUser1 = new User();
+                            newUser1.Email = "email1@yahoo.com";
+                            newUser1.Password = "Password1";
+                            newUser1.UserId = 1;
+                            newUser1.UserName = "Kimi1";
+                            myList.Add(newUser1);
+
+                            myList = myList.Where(User => User.UserName == "Kimi1").ToList();
+
+                            if (myList.Count > 0)
+                            {
+
+                                Console.WriteLine("Users found and they have the following properties");
+                                string format = "My user has these properties: " +
+                                                "Email: {0}, UserId: {1}, Password:{2}," +
+                                                ",UserName: {3}";
+
+
+                                foreach (var insideUser in userList)
+                                {
+
+                                    Console.WriteLine(format, insideUser.Email, insideUser.UserId,
+                                                       insideUser.Password, insideUser.UserName);
+                                }
+                            }
+                            else
+                            {
+
+                                throw new UserNotFound("No users found for the specified query");
+                            }
+                        }
+
+                        catch (UserNotFound exception)
+                        {
+
+                            Console.WriteLine(exception.Message);
+                        }
+
+                         Console.WriteLine("Please enter the username you are looking for:");
+
+                        break;
+
+                    case "6":
+                        try
+                        {
+                            List<Comment> myList = new List<Comment>();
+
+                            Comment newComment = new Comment();
+                            newComment.CommentId = 1;
+                            newComment.TheComment = "Hello";
+
+                            myList = myList.Where(Comment => Comment.TheComment == "Hello").ToList();
+
+                            if (myList.Count > 0)
+                            {
+
+                                Console.WriteLine("Comments found and they have the following properties");
+                                string format = "My comment has these properties: " +
+                                                "CommentId: {0}, TheComment: {1}";
+
+
+                                foreach (var insideComment in commentList)
+                                {
+
+                                    Console.WriteLine(format, insideComment.CommentId, insideComment.TheComment);
+                                }
+                            }
+                            else
+                            {
+
+                                throw new UserNotFound("No comment found for the specified query");
+                            }
+                        }
+
+                        catch (UserNotFound exception)
+                        {
+
+                            Console.WriteLine(exception.Message);
+                        }
+
+                        Console.WriteLine("Please enter the comment you are looking for:");
+
+                        break;
+
+                    case "7":
+                        {
+                            string path = "file.txt";
+
+                            bool fileExist = File.Exists(path);
+
+                            if(fileExist)
+                            {
+                                Console.WriteLine("File already exists");
+                            }
+                            else
+                            {
+                                Console.WriteLine("You have created the file: " +
+                                                  path);
+                                File.Create(path);
+                            }
+                        }
                 }
             }
 
-
-
-
         }
-
     }
 }
 
