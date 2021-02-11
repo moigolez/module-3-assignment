@@ -1,5 +1,6 @@
 ﻿ using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Modules.Models;
 using Modules.MyClasses;
@@ -15,21 +16,25 @@ namespace Modules
 
         static void Main()
         {
-            
- 
+
+            string path = "file.txt";
+
+            bool fileExist = File.Exists(path);
+
+            if(fileExist)
+            {
+                Console.WriteLine("File already exists");
+            }
+            else
+            {
+                Console.WriteLine("You have created the file: " +
+                                  path);
+                File.Create(path);
+
+            }
            
 
-            UserRepository userRepo = new UserRepository();
             
-
-            User newUser = new User();
-            newUser.Email = "kimi1@yahoo.com";
-            newUser.Password = "Password";
-            newUser.UserId = 1;
-            newUser.UserName = "Kimi";
-            userRepo.Save(newUser);
-
-            userRepo.GetAllUsersByName("Kimi");
         }
         
     }
